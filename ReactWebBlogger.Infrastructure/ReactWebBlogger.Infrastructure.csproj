@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ReactWebBlogger.Contracts\ReactWebBlogger.Contracts.csproj" />
-    <ProjectReference Include="..\ReactWebBlogger.Domain\ReactWebBlogger.Domain.csproj" />
   </ItemGroup>
 
 </Project>

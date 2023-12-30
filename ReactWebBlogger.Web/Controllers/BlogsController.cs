@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ReactWebBlogger.Contracts.Services;
-using ReactWebBlogger.Domain.Entities;
-using ReactWebBlogger.Services;
-using System.Threading.Tasks;
+using ReactWebBlogger.Application.DTOs; // Import BlogDto
 
 namespace ReactWebBlogger.WebApi.Controllers
 {
@@ -10,9 +8,9 @@ namespace ReactWebBlogger.WebApi.Controllers
     [Route("api/[controller]")]
     public class BlogController : ControllerBase
     {
-        private readonly IBlogService _blogService;
+        private readonly IBlogService<BlogDto> _blogService; // Update interface to use BlogDto
 
-        public BlogController(IBlogService blogService)
+        public BlogController(IBlogService<BlogDto> blogService)
         {
             _blogService = blogService;
         }
@@ -36,20 +34,20 @@ namespace ReactWebBlogger.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Blog blog)
+        public async Task<IActionResult> Create([FromBody] BlogDto blogDto) // Update parameter to use BlogDto
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            await _blogService.AddBlogAsync(blog);
-            return CreatedAtAction(nameof(GetById), new { id = blog.Id }, blog);
+            await _blogService.AddAsync(blogDto); // Update method to use BlogDto
+            return CreatedAtAction(nameof(GetById), new { id = blogDto.Id }, blogDto);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Blog blog)
+        public async Task<IActionResult> Update(int id, [FromBody] BlogDto blogDto) // Update parameters to use BlogDto
         {
-            if (id != blog.Id)
+            if (id != blogDto.Id)
             {
                 return BadRequest();
             }
@@ -59,7 +57,7 @@ namespace ReactWebBlogger.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _blogService.UpdateBlogAsync(blog);
+            await _blogService.UpdateAsync(blogDto); // Update method to use BlogDto
             return NoContent();
         }
 
@@ -72,7 +70,7 @@ namespace ReactWebBlogger.WebApi.Controllers
                 return NotFound();
             }
 
-            await _blogService.DeleteBlogAsync(id);
+            await _blogService.DeleteAsync(id);
             return NoContent();
         }
     }

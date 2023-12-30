@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using ReactWebBlogger.Application.DTOs;
+using ReactWebBlogger.Application.Mapping;
+using ReactWebBlogger.Application.Services;
 using ReactWebBlogger.Contracts.Repositories;
 using ReactWebBlogger.Contracts.Services;
-using ReactWebBlogger.Domain.Entities;
 using ReactWebBlogger.Infrastructure;
 using ReactWebBlogger.Infrastructure.Data;
-using ReactWebBlogger.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,9 +19,12 @@ builder.Services.AddDbContext<LocalDbContext>(options =>
     options.UseSqlite(localDBConnectionString));
 
 
+
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
 // Configure Repository and Service
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
-builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddScoped<IBlogService<BlogDto>, BlogService>();
 
 var app = builder.Build();
 

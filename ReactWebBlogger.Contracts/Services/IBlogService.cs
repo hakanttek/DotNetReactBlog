@@ -1,10 +1,9 @@
-﻿using ReactWebBlogger.Domain.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ReactWebBlogger.Contracts.Services
 {
-    public interface IBlogService : ICRUDService<Blog>
+    public interface IBlogService<BlogDto> : ICRUDService<BlogDto> where BlogDto : class
     {
     }
 }
