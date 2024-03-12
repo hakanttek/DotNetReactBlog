@@ -3,24 +3,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReactWebBlogger.Domain.Entities
 {
-    [Table("Blog")]
-    public class Blog
+
+    public class Game
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [Required]
         [Column(TypeName = "TEXT")]
         public string? Name { get; set; }
+
         [Column(TypeName = "TEXT")]
         public string? Description { get; set; }
-        [Column(TypeName = "TEXT")]
-        public string? Title { get; set; }
-        [Column(TypeName = "TEXT")]
-        public string? Author { get; set; }
+        
         [Column(TypeName = "TEXT")]
         public string? Url { get; set; }
+
         [Column(TypeName = "TEXT")]
         public string? ImageSource { get; set; }
-        public string? FrameHeight { get; set; }
     }
+
 }

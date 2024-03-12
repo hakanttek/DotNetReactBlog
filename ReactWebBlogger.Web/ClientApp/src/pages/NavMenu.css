@@ -16,3 +16,10 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+header {
+  /* position: sticky;  Fix the position */
+  top: 0;         /* Align to the top */
+  left: 0;        /* Align to the left */
+  right: 0;       /* Stretch right to fill the entire width */
+  z-index: 10000;  /* Ensure it stays on top of other content */
+}

@@ -8,8 +8,17 @@ namespace ReactWebBlogger.Application.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<Blog, BlogDto>(); // Define the mapping from Blog to BlogDto
+            CreateMap<BlogDto, Blog>();
+            CreateMap<Blog, BlogDto>();            
 
+            CreateMap<GameDto, Game>();
+            CreateMap<Game, GameDto>();
+
+            CreateMap<MessageDto, Message>();
+            CreateMap<Message, MessageDto>();
+
+            CreateMap<UserDto, User>();
+            CreateMap<User, UserDto>();
 
         }
     }

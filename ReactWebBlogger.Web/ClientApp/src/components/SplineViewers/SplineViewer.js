@@ -61,3 +61,5 @@ export class SplineViewer extends Component {
     );
   }
 }
+
+export default SplineViewer;

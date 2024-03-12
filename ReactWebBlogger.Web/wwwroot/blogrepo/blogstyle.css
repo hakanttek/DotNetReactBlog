@@ -1,0 +1,91 @@
+﻿body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.header {
+  padding: 20px;
+  text-align: center;
+}
+
+.blog-post {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.blog-post p {
+  line-height: 1.6;
+}
+
+.blog-post img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.img-25 {
+  width: 25%;
+  height: auto;
+}
+
+.img-50 {
+  width: 50%;
+  height: auto;
+}
+
+.img-75 {
+  width: 75%;
+  height: auto;
+}
+
+.img-100 {
+  width: 100%;
+  height: auto;
+}
+
+.list-standard {
+  list-style-type: lower-roman;
+  margin-left: 20px;
+  font-size: 18px
+}
+
+/* Basic Syntax Highlighting Styles */
+.code-container {
+  background-color: #282c34;
+  /* Dark background */
+  color: #abb2bf;
+  /* Light text */
+  padding: 0px;
+  margin: 0px;
+  border-radius: 8px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.keyword {
+  color: #c678dd;
+}
+
+/* Purple for keywords */
+.class-name {
+  color: #e5c07b;
+}
+
+/* Yellow for class names */
+.method {
+  color: #98c379;
+}
+
+/* Green for methods */
+.comment {
+  color: #5c6370;
+}
+
+/* Grey for comments */

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-export class GameCard extends Component {
-  static displayName = GameCard.name;
+export class BlogCard extends Component {
+  static displayName = BlogCard.name;
 
   render() {
     const { imageSource, name, description, url } = this.props;
@@ -21,7 +21,7 @@ export class GameCard extends Component {
         <div className="card-body d-flex flex-column">
           <h5 className="card-title">{name}</h5>
           <p className="card-text mb-auto">{description}</p>
-          <a href={url} className="btn btn-primary mt-3">Play</a>
+          <a href={url} className="btn btn-primary mt-3">Continue reading</a>
         </div>
       </div>
     );

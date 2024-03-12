@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ReactWebBlogger.Contracts.Services;
-using ReactWebBlogger.Application.DTOs; // Import BlogDto
+using ReactWebBlogger.Application.DTOs; // Import GameDto
 using Microsoft.AspNetCore.Authorization;
 
 namespace ReactWebBlogger.Controllers
@@ -8,50 +8,50 @@ namespace ReactWebBlogger.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize]
-    public class BlogController : ControllerBase
+    public class GameController : ControllerBase
     {
-        private readonly IBlogService<BlogDto> _blogService; // Update interface to use BlogDto
+        private readonly IGameService<GameDto> _gameService;
 
-        public BlogController(IBlogService<BlogDto> blogService)
+        public GameController(IGameService<GameDto> gameService)
         {
-            _blogService = blogService;
+            _gameService = gameService;
         }
 
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
-            var blogs = await _blogService.GetAllAsync();
-            return Ok(blogs);
+            var games = await _gameService.GetAllAsync();
+            return Ok(games);
         }
 
         [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetById(int id)
         {
-            var blog = await _blogService.GetByIdAsync(id);
-            if (blog == null)
+            var game = await _gameService.GetByIdAsync(id);
+            if (game == null)
             {
                 return NotFound();
             }
-            return Ok(blog);
+            return Ok(game);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] BlogDto blogDto) // Update parameter to use BlogDto
+        public async Task<IActionResult> Create([FromBody] GameDto gameDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            await _blogService.AddAsync(blogDto); // Update method to use BlogDto
-            return CreatedAtAction(nameof(GetById), new { id = blogDto.Id }, blogDto);
+            await _gameService.AddAsync(gameDto);
+            return CreatedAtAction(nameof(GetById), new { id = gameDto.Id }, gameDto);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] BlogDto blogDto) // Update parameters to use BlogDto
+        public async Task<IActionResult> Update(int id, [FromBody] GameDto gameDto)
         {
-            if (id != blogDto.Id)
+            if (id != gameDto.Id)
             {
                 return BadRequest();
             }
@@ -61,20 +61,20 @@ namespace ReactWebBlogger.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _blogService.UpdateAsync(blogDto); // Update method to use BlogDto
+            await _gameService.UpdateAsync(gameDto);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var blog = await _blogService.GetByIdAsync(id);
-            if (blog == null)
+            var game = await _gameService.GetByIdAsync(id);
+            if (game == null)
             {
                 return NotFound();
             }
 
-            await _blogService.DeleteAsync(id);
+            await _gameService.DeleteAsync(id);
             return NoContent();
         }
     }

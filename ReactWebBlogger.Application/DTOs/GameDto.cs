@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace ReactWebBlogger.Application.DTOs
 {
-    public class BlogDto
+    public class GameDto
     {
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public string? Url { get; set; }
         public string? ImageSource { get; set; }
-
-        public string? FrameHeight { get; set; }
     }
 }
