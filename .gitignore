@@ -366,3 +366,4 @@ FodyWeavers.xsd
 /ReactWebBlogger.Web/Data/
 /ReactWebBlogger.Web/wwwroot/blogrepo/
 /ReactWebBlogger.Web/wwwroot/img/
+/ReactWebBlogger.Web/Properties/ServiceDependencies/hakantek - Web Deploy/profile.arm.json
